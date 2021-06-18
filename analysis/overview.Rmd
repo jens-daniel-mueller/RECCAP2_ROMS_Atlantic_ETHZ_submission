@@ -85,7 +85,7 @@ ROMS_files <- ROMS_files %>%
     variable_id = str_split(file_name,
                             pattern = "_ROMS",
                             simplify = TRUE)[, 1],
-    experiment_id = str_sub(string = file_name, -19, -19)
+    experiment_id = str_sub(string = file_name, -29, -29)
   ) %>%
   mutate(experiment_id = if_else(
     experiment_id %in% c("A", "B", "C", "D"),
