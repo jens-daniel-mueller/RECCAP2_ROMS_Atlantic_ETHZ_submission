@@ -100,7 +100,8 @@ ROMS_files <- ROMS_files %>%
 
 # join file list and tab 3
 overview <- full_join(table_3, ROMS_files) %>%
-  arrange(variable_id)
+  arrange(variable_id) %>% 
+  filter(!is.na(file_size_MB))
 
 rm(ROMS_files, table_3)
 

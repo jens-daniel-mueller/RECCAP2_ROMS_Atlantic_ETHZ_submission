@@ -42,7 +42,6 @@ overview <-
 variables <-
   overview %>%
   filter(shape == "XYT") %>%
-  drop_na() %>% 
   distinct(variable_id) %>%
   pull()
 
