@@ -21,7 +21,7 @@ editor_options:
 ```{r define_paths}
 
 path_basin_mask <-
-  "/nfs/kryo/work/updata/reccapv2/"
+  "/nfs/kryo/work/updata/reccap2/"
 
 ```
 
@@ -119,7 +119,7 @@ region_masks_all %>%
 ```{r write_mask_to_csv}
 
 region_masks_all %>% 
-  write_csv("data/regions/RECCAP2_region_masks_all_clean.cvs")
+  write_csv("data/regions/RECCAP2_region_masks_all_clean.csv")
 
 ```
 

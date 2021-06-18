@@ -63,27 +63,27 @@ The list of files and sizes of the ETHZ CESM model output refers to the content 
 ```{r CESM_output_files_list}
 
 # set path to output
-path_CESM <-
-  "/net/kryo/work/loher/CESM_output/RECCAP2/submit_June2021"
-path_CESM
+path_ROMS <-
+  "/net/kryo/work/loher/ROMS/RECCAP2/Atlantic_global_proto/submit"
+path_ROMS
 
 # create list of CESM output files and sizes
 
-CESM_files_names <- list.files(path = path_CESM,
+ROMS_files_names <- list.files(path = path_ROMS,
                                pattern = ".nc")
-CESM_files_sizes <-
-  file.size(paste(path_CESM, CESM_files_names, sep = "/"))
+ROMS_files_sizes <-
+  file.size(paste(path_ROMS, ROMS_files_names, sep = "/"))
 
-CESM_files <- bind_cols(file_name = CESM_files_names,
-                        file_size_MB = round(CESM_files_sizes * 1e-6, 1))
+ROMS_files <- bind_cols(file_name = ROMS_files_names,
+                        file_size_MB = round(ROMS_files_sizes * 1e-6, 1))
 
-rm(CESM_files_names, CESM_files_sizes)
+rm(ROMS_files_names, ROMS_files_sizes)
 
 # extract variable_id and experiment_id from file name
-CESM_files <- CESM_files %>%
+ROMS_files <- ROMS_files %>%
   mutate(
     variable_id = str_split(file_name,
-                            pattern = "_CESM",
+                            pattern = "_ROMS",
                             simplify = TRUE)[, 1],
     experiment_id = str_sub(string = file_name, -19, -19)
   ) %>%
@@ -99,10 +99,10 @@ CESM_files <- CESM_files %>%
 ```{r create_overview_table}
 
 # join file list and tab 3
-overview <- full_join(table_3, CESM_files) %>%
+overview <- full_join(table_3, ROMS_files) %>%
   arrange(variable_id)
 
-rm(CESM_files, table_3)
+rm(ROMS_files, table_3)
 
 # write overview file
 overview %>%
@@ -136,19 +136,19 @@ overview %>%
 
 # create list of CESM output files and sizes
 
-CESM_files_names_tar <- list.files(path = path_CESM,
+ROMS_files_names_tar <- list.files(path = path_ROMS,
                                    pattern = ".tar")
-CESM_files_sizes_tar <-
-  file.size(paste(path_CESM, CESM_files_names_tar, sep = "/"))
+ROMS_files_sizes_tar <-
+  file.size(paste(path_ROMS, ROMS_files_names_tar, sep = "/"))
 
-CESM_files_tar <- bind_cols(
-  file_name = CESM_files_names_tar,
-  file_size_GB = round(CESM_files_sizes_tar * 1e-9, 1))
+ROMS_files_tar <- bind_cols(
+  file_name = ROMS_files_names_tar,
+  file_size_GB = round(ROMS_files_sizes_tar * 1e-9, 1))
 
-rm(path_CESM, CESM_files_names_tar, CESM_files_sizes_tar)
+rm(path_ROMS, ROMS_files_names_tar, ROMS_files_sizes_tar)
 
 # extract variable_id and experiment_id from file name
-CESM_files_tar
+ROMS_files_tar
 
 
 ```
