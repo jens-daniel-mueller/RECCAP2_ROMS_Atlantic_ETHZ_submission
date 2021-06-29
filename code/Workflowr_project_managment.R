@@ -20,7 +20,7 @@ wflow_publish(here::here("analysis",
                            "diagnostics_variables_XYZT.Rmd",
                            "diagnostics_variables_ancillary.Rmd"
                          )),
-              message = "drop non-existing files from overview",
+              message = "rerun with v20210624, after first internal revision",
               republish = TRUE)
 
 # Push latest version to GitHub
