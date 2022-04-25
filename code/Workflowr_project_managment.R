@@ -20,7 +20,7 @@ wflow_publish(here::here("analysis",
                            "diagnostics_variables_XYZT.Rmd",
                            "diagnostics_variables_ancillary.Rmd"
                          )),
-              message = "rerun with v20210707, the submitted files",
+              message = "rerun with 20220425",
               republish = TRUE)
 
 # Push latest version to GitHub
